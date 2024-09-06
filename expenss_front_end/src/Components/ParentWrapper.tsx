@@ -4,14 +4,17 @@ import { Colors } from '../Styles/colors';
 
 export interface ParentWrapperProps{
     children:React.ReactNode,
-    parentStyle?:StyleProp<ViewStyle>
+    parentStyle?:StyleProp<ViewStyle>,
+    isStatusBar?:boolean
 }
 
-const ParentWrapper:React.FC<ParentWrapperProps> =({children,parentStyle})=>{
+const ParentWrapper:React.FC<ParentWrapperProps> =({children,parentStyle,isStatusBar})=>{
 
     return(
         <SafeAreaView style={[style.container,parentStyle]}>
-            <StatusBar backgroundColor={Colors.primary} barStyle={'light-content'} />
+            <StatusBar 
+            hidden={isStatusBar}
+            backgroundColor={Colors.primary} barStyle={'dark-content'} />
             {children}
         </SafeAreaView>
     )
